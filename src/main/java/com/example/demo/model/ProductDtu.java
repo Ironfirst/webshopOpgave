@@ -2,17 +2,22 @@ package com.example.demo.model;
 
 public class ProductDtu
 {
-    String name;
     int id;
+    String name;
     String beskrivelse;
-    double price;
+    Long price;
 
-    public ProductDtu(String name, int id, String beskrivelse, double price)
+    public ProductDtu( int id,String name, Long price, String beskrivelse)
     {
         this.name = name;
         this.id = id;
         this.beskrivelse = beskrivelse;
         this.price = price;
+    }
+
+    // tom constructor til oprettelse af objecter
+    public ProductDtu(){
+
     }
 
     public String getName()
@@ -45,12 +50,12 @@ public class ProductDtu
         this.beskrivelse = beskrivelse;
     }
 
-    public double getPrice()
+    public Long getPrice()
     {
         return price;
     }
 
-    public void setPrice(double price)
+    public void setPrice(Long price)
     {
         this.price = price;
     }
