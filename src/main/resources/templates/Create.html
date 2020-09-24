@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Opret nyt product</title>
 </head>
 <body>
+
+<h1>opret product</h1>
+
+<!--<form action="/Create" method="Post">-->
+<!--    <input type="text" name="pro_name" th:value="${productDtu.pro_name}">-->
+<!--    <input type="number" name="pro_price" placeholder="${productDtu.pro_price}">-->
+<!--    <input type="text" name="pro_des" placeholder="${productDtu.pro_des}">-->
+<!--    <input type="submit" value="send">-->
+
+
+<form action="#" th:action="@{/Create}" th:object="${productDtu}" method="POST">
+    <div class="form-row">
+
+        <div class="form-group col-md-6">
+            <label>navn</label>
+            <input type="text" class="form-control" th:field="*{name}">
+        </div>
+
+        <div class="form-group col-md-6">
+            <label>pris</label>
+            <input type="number" class="form-control" th:field="*{price}">
+        </div>
+
+        <div class="form-group col-md-6">
+            <label>beskrivelse</label>
+            <input type="text" class="form-control" th:field="*{beskrivelse}">
+        </div>
+
+    </div>
+
+</form>
 
 </body>
 </html>

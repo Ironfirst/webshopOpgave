@@ -21,13 +21,13 @@ public class ProductRepository {
     // denne metode opretter products gennem prepared statement med input parametre
     // og checker om metoden er kørt korrekt ved at tælle om product oprettet > 0
     public boolean create(ProductDtu productDtu) {
-        String sql = "INSERT INTO webshop.products(pro_name, pro_price, pro_des) VALUES (?,?,?)";
+        String sql = "INSERT INTO wepshopopgave1.new_table(pro_name, pro_price, pro_des) VALUES (?,?,?)";
 
         try{
             PreparedStatement psProducts = conn.prepareStatement(sql);
 
             psProducts.setString(1,productDtu.getName());
-            psProducts.setLong(2,productDtu.getPrice());
+            psProducts.setDouble(2,productDtu.getPrice());
             psProducts.setString(3,productDtu.getBeskrivelse());
 
             int rowsInserted = psProducts.executeUpdate();
@@ -50,14 +50,14 @@ public class ProductRepository {
         List<ProductDtu> allProducts = new ArrayList<>();
 
         try{
-            PreparedStatement psProduct = conn.prepareStatement("SELECT * FROM webshop.products");
+            PreparedStatement psProduct = conn.prepareStatement("SELECT * FROM wepshopopgave1.new_table");
             ResultSet rs = psProduct.executeQuery();
             while (rs.next()) {
                 ProductDtu tempProduct = new ProductDtu();
-
-                tempProduct.setName(rs.getString(1));
-                tempProduct.setPrice(rs.getLong(2));
-                tempProduct.setBeskrivelse(rs.getString(3));
+                tempProduct.setId(rs.getInt(1));
+                tempProduct.setName(rs.getString(2));
+                tempProduct.setPrice(rs.getDouble(3));
+                tempProduct.setBeskrivelse(rs.getString(4));
                 allProducts.add(tempProduct);
             }
         }
@@ -70,13 +70,13 @@ public class ProductRepository {
 
 
     public boolean update(ProductDtu productDtu){
-        String sql = "UPDATE webshop.products SET pro_name=?, pro_price=?, pro_des=? WHERE pro_id="+ productDtu.getId();
+        String sql = "UPDATE wepshopopgave1.new_table SET pro_name=?, pro_price=?, pro_des=? WHERE pro_id="+ productDtu.getId();
 
         try{
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1,productDtu.getName());
-            ps.setLong(2,productDtu.getPrice());
-            ps.setString(3,productDtu.getBeskrivelse());
+            ps.setString(2,productDtu.getName());
+            ps.setDouble(3,productDtu.getPrice());
+            ps.setString(4,productDtu.getBeskrivelse());
 
             int rowsUpdated = ps.executeUpdate();
             if(rowsUpdated>0){
@@ -94,7 +94,7 @@ public class ProductRepository {
 
 
     public boolean delete(int pro_id){
-        String sql = "DELETE FROM webshop.products WHERE pro_id=?";
+        String sql = "DELETE FROM wepshopopgave1.new_table WHERE pro_id=?";
 
         try{
             PreparedStatement ps = conn.prepareStatement(sql);

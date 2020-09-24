@@ -4,16 +4,17 @@ public class ProductDtu
 {
     int id;
     String name;
+    Double price;
     String beskrivelse;
-    Long price;
 
-    public ProductDtu( int id,String name, Long price, String beskrivelse)
+    public ProductDtu( int id,String name, Double price, String beskrivelse)
     {
-        this.name = name;
         this.id = id;
-        this.beskrivelse = beskrivelse;
+        this.name = name;
         this.price = price;
+        this.beskrivelse = beskrivelse;
     }
+
 
     // tom constructor til oprettelse af objecter
     public ProductDtu(){
@@ -50,12 +51,12 @@ public class ProductDtu
         this.beskrivelse = beskrivelse;
     }
 
-    public Long getPrice()
+    public Double getPrice()
     {
         return price;
     }
 
-    public void setPrice(Long price)
+    public void setPrice(Double price)
     {
         this.price = price;
     }
