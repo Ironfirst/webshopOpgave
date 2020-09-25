@@ -25,7 +25,7 @@ public class HomeController
     }
 
     @GetMapping("/Create")
-    public String CreateMetode(){
+    public String CreateMetode(ProductDtu productDtu){
         return "Create";
     }
 
