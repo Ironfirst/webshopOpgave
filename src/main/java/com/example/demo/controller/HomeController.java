@@ -45,6 +45,14 @@ public class HomeController
         productRepository.update(productDtu);
         return "redirect:/";
     }
+
+    /*
+    @GetMapping ("Delete")
+    public String DeleteProduct(){
+        productRepository.delete()
+    }
+
+     */
 //
 //    @PostMapping("/")
 //    public String UpdateMetode(){
