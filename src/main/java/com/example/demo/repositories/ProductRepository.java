@@ -18,6 +18,28 @@ public class ProductRepository {
         this.conn = DatabaseConnectionManager.getDatabaseConnection();
     }
 
+    // denne metode læser enkelte products efter hvilke attribut der er ønsket. f.eks id
+
+    public ProductDtu read(String pro_id){
+        ProductDtu productToReturn = new ProductDtu();
+
+        try {
+            PreparedStatement getSingleProductToReturn = conn.prepareStatement("SELECT * FROM wepshopopgave1.new_table WHERE pro_id='" + pro_id+"'");
+            ResultSet rs = getSingleProductToReturn.executeQuery();
+            while(rs.next()){
+                productToReturn.setId(rs.getInt(1));
+                productToReturn.setName(rs.getString(2));
+                productToReturn.setPrice(rs.getDouble(3));
+                productToReturn.setBeskrivelse(rs.getString(4));
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("noget gik galt i get single product metoden / read");
+        }
+        return productToReturn;
+    }
+
     // denne metode opretter products gennem prepared statement med input parametre
     // og checker om metoden er kørt korrekt ved at tælle om product oprettet > 0
     public boolean create(ProductDtu productDtu) {

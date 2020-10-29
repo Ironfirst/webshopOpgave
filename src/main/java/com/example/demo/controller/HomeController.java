@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController
@@ -35,8 +36,10 @@ public class HomeController
         return "redirect:/";
     }
 
+    // update gider mig ikke jeg går videre med delete og prøver at få det running.
     @GetMapping("/Update")
-    public String update(){
+    public String getProductToUpdate(@RequestParam String pro_id, Model model){
+        model.addAttribute("products", productRepository.read(pro_id));
         return "Update";
     }
 
@@ -45,6 +48,21 @@ public class HomeController
         productRepository.update(productDtu);
         return "redirect:/";
     }
+    // prøver at få delete product til at virke
+    @GetMapping ("/Delete")
+    public String getDeleteProduct(@RequestParam int pro_id, Model model){
+        model.addAttribute("deleteProduct", productRepository.delete(pro_id));
+        return "redirect:/";
+    }
+
+//    @GetMapping("/bookings/deleteBooking")
+//    public String getDeleteBooking(@RequestParam int id, Model model) {
+//        model.addAttribute("deleteBooking", BookingIDRep.BookingIdByInt(id));
+//        return "/bookings/deleteBooking";
+//
+//    }
+//
+
 
     /*
     @GetMapping ("Delete")

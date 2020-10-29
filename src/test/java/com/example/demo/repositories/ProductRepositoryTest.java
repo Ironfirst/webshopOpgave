@@ -20,16 +20,16 @@ class ProductRepositoryTest
     ProductRepository repMock;
      */
 
-    @BeforeEach
-    void setUp()
-    {
-       mockedRep = Mockito.mock(ProductRepository.class);
-
-    }
-
-    @Test
-    public void getProduct(){
-        Mockito.when(mockedRep.readAll()).thenReturn()
-    }
+//    @BeforeEach
+//    void setUp()
+//    {
+//       mockedRep = Mockito.mock(ProductRepository.class);
+//
+//    }
+//
+//    @Test
+//    public void getProduct(){
+//        Mockito.when(mockedRep.readAll()).thenReturn()
+//    }
 
 }

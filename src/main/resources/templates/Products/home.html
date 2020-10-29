@@ -21,11 +21,22 @@
 
 <tr th:each="product : ${products}">
     <td th:text="${product.getName()}"></td>
-    <td th:double="${product.getPrice()}"></td>
+    <td th:text="${product.getPrice()}"></td>
     <td th:text="${product.getBeskrivelse()}"></td>
 
-    <td> <a th:href="@{'/Update' + ${product.getId()}}">Opdater</a></td>
-    <td> <a th:href="@{'/Delete' + ${product.getId()}}">Slet</a></td>
+<!--    <td> <a th:href="@{'Update' + ${product.getId()}}">Opdater</a></td>-->
+    <td>
+        <a th:href="@{/Update(pro_id=${product.getId()})}" role="button">Opdater</a>
+    </td>
+
+<!--    <a th:href="@{/models/detailModels(id=${models.Model_number})}" class="btn btn-success"-->
+<!--       role="button">Mere om</a>-->
+
+    <td>
+    <a th:href="@{/Delete(pro_id=${product.getId()})}" role="button" >Delete</a>
+    </td>
+
+<!--    <td> <a th:href="@{'Delete' + ${product.getId()}}">Slet</a></td>-->
 </tr>
 
 </table>
