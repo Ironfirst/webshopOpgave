@@ -92,13 +92,13 @@ public class ProductRepository {
 
 
     public boolean update(ProductDtu productDtu){
-        String sql = "UPDATE wepshopopgave1.new_table SET pro_name=?, pro_price=?, pro_des=? WHERE pro_id="+ productDtu.getId();
+        String sql = "UPDATE wepshopopgave1.new_table SET pro_name=?, pro_price=?, pro_des=? WHERE pro_id='"+ productDtu.getId()+"'";
 
         try{
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(2,productDtu.getName());
-            ps.setDouble(3,productDtu.getPrice());
-            ps.setString(4,productDtu.getBeskrivelse());
+            ps.setString(1,productDtu.getName());
+            ps.setDouble(2,productDtu.getPrice());
+            ps.setString(3,productDtu.getBeskrivelse());
 
             int rowsUpdated = ps.executeUpdate();
             if(rowsUpdated>0){

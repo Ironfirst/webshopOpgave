@@ -39,7 +39,7 @@ public class HomeController
     // update gider mig ikke jeg går videre med delete og prøver at få det running.
     @GetMapping("/Update")
     public String getProductToUpdate(@RequestParam String pro_id, Model model){
-        model.addAttribute("products", productRepository.read(pro_id));
+        model.addAttribute("Updateproducts", productRepository.read(pro_id));
         return "Update";
     }
 
