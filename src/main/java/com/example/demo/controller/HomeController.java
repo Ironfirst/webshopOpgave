@@ -44,7 +44,7 @@ public class HomeController
     }
 
     @PostMapping ("/Update")
-    public String updateProduct(ProductDtu productDtu){
+    public String postUpdateproducts(ProductDtu productDtu){
         productRepository.update(productDtu);
         return "redirect:/";
     }
